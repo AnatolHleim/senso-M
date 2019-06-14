@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.concurrent.TimeUnit;
 
 public class AuthPage extends AbstractPage {
-  private static final String URL_AUTH = "http://localhost:4200/auth/login";
+  private static final String URL_AUTH = AbstractPage.BASE_URL+"auth/login";
   public AuthPage(WebDriver driver, Logger log) {
     super(driver, log);
   }

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.*;
 
 public class AbstractPage {
-
+  public static final String BASE_URL = "http://localhost:4200/";
    WebDriver driver;
   Logger log;
   private static final String ARRAY_ENG_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -58,7 +58,7 @@ public class AbstractPage {
     waitForVisibilityOf(webElement, 5);
     return webElement;
   }
-  void click(WebElement webElement) {
+  public void click(WebElement webElement) {
     waitForVisibilityOf(webElement, 5);
     find(webElement).click();
   }
@@ -73,7 +73,7 @@ public class AbstractPage {
   /**
    * Type given text into element with given locator
    */
-  void type(String text, WebElement webElement) {
+  public void type(String text, WebElement webElement) {
     waitForVisibilityOf(webElement, 5);
     find(webElement).sendKeys(text);
   }

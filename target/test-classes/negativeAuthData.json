@@ -1,18 +1,6 @@
 {
   "dataSet": [
     {
-      "testCase": "Verify Admin Role",
-      "username": "ya.rafon-92@ya.ru",
-      "password": "Sanchez",
-      "message": "//div[@class='notFound__text']"
-    },
-    {
-      "testCase": "Verify Admin Role Upper Case Email",
-      "username": "YA.RAFON-92@YA.RU",
-      "password": "Sanchez",
-      "message": "//p[@class='notFound__errCode']"
-    },
-    {
       "testCase": "Verify empty Field",
       "username": "",
       "password": "",
