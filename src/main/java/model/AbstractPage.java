@@ -58,6 +58,10 @@ public class AbstractPage {
     waitForVisibilityOf(webElement, 5);
     return webElement;
   }
+  public WebElement findXpath(String locator) {
+    waitForVisibilityOf(driver.findElement(By.xpath(locator)), 5);
+    return driver.findElement(By.xpath(locator));
+  }
   public void click(WebElement webElement) {
     waitForVisibilityOf(webElement, 5);
     find(webElement).click();

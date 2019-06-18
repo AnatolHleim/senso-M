@@ -1,0 +1,46 @@
+{
+  "dataSet": [
+    {
+      "testCase": "Verify Success Valid Input",
+      "username": "ya.rafon-92@ya.ru",
+      "password": "Sanchez",
+      "ownerName": "Foo",
+      "engineerName": "Foo",
+      "managerName": "Foo",
+      "objectName": "Foo",
+      "objectAddress": "Foo",
+      "objectURL": "Foo",
+      "snowCover": "99",
+      "locator": "//div[@class='objects new-object']//p[@class='submit-form-info']",
+      "message": "Данные сохранены"
+    },
+    {
+      "testCase": "Verify error empty nameObject",
+      "username": "ya.rafon-92@ya.ru",
+      "password": "Sanchez",
+      "ownerName": "Foo",
+      "engineerName": "Foo",
+      "managerName": "Foo",
+      "objectName": "",
+      "objectAddress": "Foo",
+      "objectURL": "Foo",
+      "snowCover": "99",
+      "locator": "//div[@class='objects new-object']//p[@class='submit-form-info']",
+      "message": "Данные сохранены"
+    },
+    {
+      "testCase": "Verify error empty address",
+      "username": "ya.rafon-92@ya.ru",
+      "password": "Sanchez",
+      "ownerName": "Foo",
+      "engineerName": "Foo",
+      "managerName": "Foo",
+      "objectName": "Foo",
+      "objectAddress": "",
+      "objectURL": "Foo",
+      "snowCover": "99",
+      "locator": "//div[@class='objects new-object']//p[@class='submit-form-info']",
+      "message": "Данные сохранены"
+    }
+  ]
+}
