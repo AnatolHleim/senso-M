@@ -11,7 +11,7 @@
       "objectAddress": "Foo",
       "objectURL": "Foo",
       "snowCover": "99",
-      "locator": "//div[@class='objects new-object']//p[@class='submit-form-info']",
+      "locator": "successSaveOwnerBlockMessage",
       "message": "Данные сохранены"
     },
     {
@@ -25,8 +25,8 @@
       "objectAddress": "Foo",
       "objectURL": "Foo",
       "snowCover": "99",
-      "locator": "//div[@class='objects new-object']//p[@class='submit-form-info']",
-      "message": "Данные сохранены"
+      "locator": "errorNameObjectInput",
+      "message": "Обязательно для заполнения"
     },
     {
       "testCase": "Verify error empty address",
@@ -39,7 +39,49 @@
       "objectAddress": "",
       "objectURL": "Foo",
       "snowCover": "99",
-      "locator": "//div[@class='objects new-object']//p[@class='submit-form-info']",
+      "locator": "errorAddressObjectInput",
+      "message": "Обязательно для заполнения"
+    },
+    {
+      "testCase": "Verify error empty login",
+      "username": "",
+      "password": "Sanchez",
+      "ownerName": "Foo",
+      "engineerName": "Foo",
+      "managerName": "Foo",
+      "objectName": "Foo",
+      "objectAddress": "foo",
+      "objectURL": "Foo",
+      "snowCover": "99",
+      "locator": "errorLoginInput",
+      "message": "Обязательно для заполнения"
+    },
+    {
+      "testCase": "Verify error empty password",
+      "username": "ya.rafon-92@ya.ru",
+      "password": "",
+      "ownerName": "Foo",
+      "engineerName": "Foo",
+      "managerName": "Foo",
+      "objectName": "Foo",
+      "objectAddress": "foo",
+      "objectURL": "Foo",
+      "snowCover": "99",
+      "locator": "errorLoginInput",
+      "message": "Обязательно для заполнения"
+    },
+    {
+      "testCase": "Verify valid save without personal names",
+      "username": "ya.rafon-92@ya.ru",
+      "password": "Sanchez",
+      "ownerName": "",
+      "engineerName": "",
+      "managerName": "",
+      "objectName": "Foo",
+      "objectAddress": "foo",
+      "objectURL": "Foo",
+      "snowCover": "99",
+      "locator": "successSaveOwnerBlockMessage",
       "message": "Данные сохранены"
     }
   ]

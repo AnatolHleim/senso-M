@@ -4,8 +4,10 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
-import java.util.List;
+import java.lang.reflect.Field;
+import java.util.*;
 
 public class NewObjectPage extends AbstractPage {
     public NewObjectPage(WebDriver driver, Logger log) {
@@ -13,21 +15,20 @@ public class NewObjectPage extends AbstractPage {
     }
     private static final String URL_NEW_OBJECT = AbstractPage.BASE_URL;
     public NewObjectPage openPage() {
-        log.info("Opening page: " + URL_NEW_OBJECT);
         openUrl(URL_NEW_OBJECT);
-        log.info("Page opened!");
         return new NewObjectPage(driver,log);
     }
 
-    public void selectFile(String fileName) {
-        log.info("Selecting '" + fileName + "' file from Files folder");
-        String filePath = System.getProperty("user.dir") + "//src//main//resources//files//" + fileName;
-        type(filePath, buttonLoadLogo);
-        log.info("File selected");
+    public WebElement selectMessage(String nameMessage){
+        Map<String,WebElement> messageMap = new HashMap<String, WebElement>();
+        messageMap.put("errorNameObjectInput",errorNameObjectInput);
+        messageMap.put("errorAddressObjectInput",errorAddressObjectInput);
+        messageMap.put("errorLoginInput",errorLoginInput);
+        messageMap.put("errorPasswordInput",errorPasswordInput);
+        messageMap.put("successSaveOwnerBlockMessage",successSaveOwnerBlockMessage);
+        return messageMap.get(nameMessage);
     }
 
-    @FindBy (xpath = "//div[@class='title']")
-    WebElement titleNewObject;
     @FindBy (xpath = "//div[@class='input datalist' and preceding-sibling::div/h2[text()='Владелец процесса']]")
     public WebElement ownerField;
     @FindBy (xpath = "//div[@class='input datalist' and preceding-sibling::div/h2[text()='Инженер 1']]")
@@ -36,12 +37,12 @@ public class NewObjectPage extends AbstractPage {
     public WebElement managerField;
     @FindBy (xpath = "//div[div[@class='input-title']/h2[contains(text(),'Название')]]//div/input")
     public WebElement nameObjectInput;
-    @FindBy (xpath = "//div[div[@class='input-title']/h2[contains(text(),'Название')]]//div/p[@class='error']")
+    @FindBy (how = How.XPATH, xpath = "//div[div[@class='input-title']/h2[contains(text(),'Название')]]//div/p[@class='error']")
     public WebElement errorNameObjectInput;
     @FindBy (xpath = "//div[div[@class='input-title']/h2[contains(text(),'Адрес')]]//div/input")
-    public WebElement adressObjectInput;
+    public WebElement addressObjectInput;
     @FindBy (xpath = "//div[div[@class='input-title']/h2[contains(text(),'Адрес')]]//div/p[@class='error']")
-    public WebElement errorAdressObjectInput;
+    public WebElement errorAddressObjectInput;
     @FindBy (xpath = "//div[div[@class='input-title']/h2[contains(text(),'URL')]]//div/input")
     public WebElement URLObjectInput;
     @FindBy (xpath = "//div[@class='label useAuthentication']/label/span")
@@ -59,7 +60,7 @@ public class NewObjectPage extends AbstractPage {
     @FindBy (xpath = "//label[@class='button ng-untouched ng-pristine ng-valid']/input")
     public WebElement inputPathLogo;
     @FindBy (xpath = "//button[text()='Выбрать из списка']")
-    public WebElement buttonLoadStandartLogo;
+    public WebElement buttonLoadDefaultLogo;
     @FindBy (xpath = "//p[contains(text(),'Файл должен быть в формате JPG')]")
     WebElement errorForLogoLoad;
     @FindBy (xpath = "//div[@class='label snowCover']/input")
@@ -70,5 +71,6 @@ public class NewObjectPage extends AbstractPage {
     public WebElement successSaveOwnerBlockMessage;
     @FindBy (xpath = "//div[@class='chooseFromList-wrap']")
     public List<WebElement> svgLogoList;
+
 
 }

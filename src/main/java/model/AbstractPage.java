@@ -96,7 +96,7 @@ public class AbstractPage {
   /**
    * Get title of current page
    */
-  private String getCurrentPageTitle() {
+  public String getCurrentPageTitle() {
     return driver.getTitle();
   }
 

@@ -19,6 +19,11 @@ import java.util.concurrent.TimeUnit;
 
 public class NewObjectGeneralTest extends TestData{
     @Test
+    public void verifyTitleNewObjectPage(){
+        NewObjectPage newObjectPage = new NewObjectPage(driver,log).openPage();
+        Assert.assertEquals(newObjectPage.getCurrentPageTitle(),"Client");
+    }
+    @Test
     public void one(){
         driver.get("http://localhost:4200/");
         WebElement ownerInput =driver.findElement(By.xpath("//div[@class='input datalist' and preceding-sibling::div/h2[text()='Владелец процесса']]"));
@@ -46,21 +51,17 @@ public class NewObjectGeneralTest extends TestData{
         newObjectPage.type(data.getEngineerName(),newObjectPage.firstEngeneerField.findElement(By.xpath("./input")));
         newObjectPage.type(data.getManagerName(),newObjectPage.managerField.findElement(By.xpath("./input")));
         newObjectPage.type(data.getObjectName(),newObjectPage.nameObjectInput);
-        newObjectPage.type(data.getObjectAddress(),newObjectPage.adressObjectInput);
+        newObjectPage.type(data.getObjectAddress(),newObjectPage.addressObjectInput);
         newObjectPage.type(data.getObjectURL(),newObjectPage.URLObjectInput);
         newObjectPage.type(data.getUsername(),newObjectPage.loginInput);
         newObjectPage.type(data.getPassword(),newObjectPage.passwordInput);
         newObjectPage.click(newObjectPage.checkBoxAuth);
-        newObjectPage.click(newObjectPage.buttonLoadStandartLogo);
-        newObjectPage.click(newObjectPage.svgLogoList.get(0));
+        newObjectPage.click(newObjectPage.buttonLoadDefaultLogo);
+       newObjectPage.click(newObjectPage.svgLogoList.get(0));
         newObjectPage.type(data.getSnowCover(),newObjectPage.snowCoverInput);
         newObjectPage.click(newObjectPage.buttonSaveOwnerBlock);
-        Assert.assertEquals(newObjectPage.findXpath(data.getLocator()).getText(),data.getMessageText());
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Assert.assertEquals(newObjectPage.selectMessage(data.getLocator()).getText(),data.getMessageText());
+
     }
     @DataProvider
     public Object[][] getDataNewObject() throws FileNotFoundException {
