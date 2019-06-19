@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="sensoMcat" target="1.5" />
+      <module name="sensoMcat" target="6" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -3,6 +3,7 @@ package controller;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 class BrowserDriverFactory {
@@ -22,9 +23,24 @@ class BrowserDriverFactory {
     } else if ("firefox".equals(browser)) {
       driver.set(new FirefoxDriver());
 
-    } else {
+    }
+    else if ("chromeHeadless".equals(browser)) {
+      ChromeOptions chromeOptions = new ChromeOptions();
+      chromeOptions.addArguments("--headless");
+      driver.set(new ChromeDriver(chromeOptions));
+
+    }else {
       driver.set(new ChromeDriver());
     }
+    return driver.get();
+  }
+  WebDriver createChromeWithProfile(String profile) {
+    log.info("Starting chrome driver with profile: " + profile);
+    ChromeOptions chromeOptions = new ChromeOptions();
+    chromeOptions.addArguments("user-data-dir=src/main/resources/Profiles/" + profile);
+
+    System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+    driver.set(new ChromeDriver(chromeOptions));
     return driver.get();
   }
 }

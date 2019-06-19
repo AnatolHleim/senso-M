@@ -79,7 +79,8 @@ public class AbstractPage {
    */
   public void type(String text, WebElement webElement) {
     waitForVisibilityOf(webElement, 5);
-    find(webElement).sendKeys(text);
+    find(webElement).clear();
+    webElement.sendKeys(text);
   }
   public boolean visibleElement(WebElement webElement) {
     waitForVisibilityOf(webElement, 5);
@@ -111,9 +112,9 @@ public class AbstractPage {
    * Wait for specific ExpectedCondition for the given amount of time in seconds
    */
   private void waitFor(ExpectedCondition<WebElement> condition, Integer timeOutInSeconds) {
-    timeOutInSeconds = timeOutInSeconds != null ? timeOutInSeconds : 30;
-    WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
-    wait.until(condition);
+//    timeOutInSeconds = timeOutInSeconds != null ? timeOutInSeconds : 30;
+//    WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+//    wait.until(condition);
   }
 
   /**
@@ -136,11 +137,11 @@ public class AbstractPage {
   /**
    * Wait for alert present and then switch to it
    */
-  protected Alert switchToAlert() {
-    WebDriverWait wait = new WebDriverWait(driver, 5);
-    wait.until(ExpectedConditions.alertIsPresent());
-    return driver.switchTo().alert();
-  }
+//  protected Alert switchToAlert() {
+//    WebDriverWait wait = new WebDriverWait(driver, 5);
+//    wait.until(ExpectedConditions.alertIsPresent());
+//    return driver.switchTo().alert();
+//  }
 
   public void switchToWindowWithTitle(String expectedTitle) {
     // Switching to new window

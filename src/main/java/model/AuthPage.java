@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.concurrent.TimeUnit;
 
 public class AuthPage extends AbstractPage {
-  private static final String URL_AUTH = AbstractPage.BASE_URL+"auth/login";
+  public static final String URL_AUTH = AbstractPage.BASE_URL+"auth/login";
   public AuthPage(WebDriver driver, Logger log) {
     super(driver, log);
   }
@@ -29,19 +29,30 @@ public class AuthPage extends AbstractPage {
     click(linkForgotPassword);
     return new ResetPasswordPage(driver,log);
   }
+  public boolean elementHasAttribute(WebElement element,String attribute ,String active) {
+    return element.getAttribute(attribute).contains(active);
+  }
   public WebElement findBy(By by){
    return find(driver.findElement(by));
   }
 
   @FindBy(id = "email")
-  WebElement inputUserEmail;
+  public WebElement inputUserEmail;
   @FindBy (id = "password")
-  WebElement inputPassword;
+  public WebElement inputPassword;
   @FindBy (xpath = "//button[@type='submit']")
-  WebElement buttonSubmit;
+  public WebElement buttonSubmit;
   @FindBy (xpath = "//button[@class='button button_disabled']")
   public WebElement buttonSubmitDisabled;
   @FindBy (css = "div.auth__forgot-password > a")
   WebElement linkForgotPassword;
+  @FindBy (xpath = "//div[@class='auth__password-eye']")
+  public WebElement buttonShowPassword;
+  @FindBy (xpath = "//span[@class='link footer__left-item p1']")
+  public WebElement linkFooterRequisites;
+  @FindBy (xpath = "//div[@ng-reflect-klass='requisites-bg']")
+  public WebElement frameModalRequisites;
+  @FindBy (xpath = "//div[@class='requisites__close']")
+  public WebElement buttonCloseModalRequisites;
 
 }

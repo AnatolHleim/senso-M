@@ -25,14 +25,9 @@ public class NewObjectGeneralTest extends TestData{
     }
     @Test
     public void one(){
-        driver.get("http://localhost:4200/");
-        WebElement ownerInput =driver.findElement(By.xpath("//div[@class='input datalist' and preceding-sibling::div/h2[text()='Владелец процесса']]"));
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        ownerInput.click();
-        WebElement input = ownerInput.findElement(By.xpath("./input"));
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        input.sendKeys("2");
-        List<WebElement> listSelectOwner = ownerInput.findElements(By.xpath("./datalist/option"));
+        NewObjectPage newObjectPage = new NewObjectPage(driver,log).openPage();
+        newObjectPage.click(newObjectPage.ownerField);
+        List<WebElement> listSelectOwner = newObjectPage.ownerField.findElements(By.xpath("./datalist/option"));
 
         for (WebElement e:listSelectOwner
         ) {
@@ -52,7 +47,7 @@ public class NewObjectGeneralTest extends TestData{
         newObjectPage.type(data.getManagerName(),newObjectPage.managerField.findElement(By.xpath("./input")));
         newObjectPage.type(data.getObjectName(),newObjectPage.nameObjectInput);
         newObjectPage.type(data.getObjectAddress(),newObjectPage.addressObjectInput);
-        newObjectPage.type(data.getObjectURL(),newObjectPage.URLObjectInput);
+        newObjectPage.type(data.getObjectURL(),newObjectPage.urlObjectInput);
         newObjectPage.type(data.getUsername(),newObjectPage.loginInput);
         newObjectPage.type(data.getPassword(),newObjectPage.passwordInput);
         newObjectPage.click(newObjectPage.checkBoxAuth);

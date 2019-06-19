@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="softwaretestingmaterial">
+    <test name="Positive">
+        <parameter name="browser" value="chromeHeadless"></parameter>
+        <classes>
+            <class name="AuthPageTestPositive" />
+        </classes>
+</test>
+</suite>

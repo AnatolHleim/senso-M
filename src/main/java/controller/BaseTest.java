@@ -10,13 +10,17 @@ public class BaseTest {
     protected WebDriver driver;
     protected Logger log;
 
-    @Parameters({"browser"})
+    @Parameters({"browser", "chromeProfile"})
     @BeforeMethod(alwaysRun = true)
-    public void setUp(@Optional("chrome") String browser, ITestContext crx) {
+    public void setUp(@Optional("chrome") String browser, ITestContext crx, @Optional String parameter) {
         String testName = crx.getCurrentXmlTest().getName();
         log = LogManager.getLogger(testName);
         BrowserDriverFactory factory = new BrowserDriverFactory(browser, log);
-        driver = factory.createDriver();
+        if (parameter != null) {
+            driver = factory.createChromeWithProfile(parameter);
+        } else {
+            driver = factory.createDriver();
+        }
         driver.manage().window().maximize();
     }
 
